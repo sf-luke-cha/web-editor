@@ -42,7 +42,7 @@
               <option data-icon="fa fa-apple" value="iOS">iOS</option>
               <!-- <option data-icon="glyphicon-apple" value="Neco">Neco(beta)</option> -->
             </select>
-            <!-- <el-select v-model="serial" allow-create filterable placeholder="选择或输入">
+            <!-- <el-select v-model="serial" allow-create filterable placeholder="Select or enter">
               <el-option
                 v-for="item in deviceList" :key="item.value" :label="item.label + ':' + item.value" :value="item.value">
               </el-option>
@@ -58,7 +58,7 @@
             <i class="fa fa-refresh" :class='{"fa-spin": dumping}'></i> Dump Hierarchy
           </button>
           <template v-if="platform == 'Android'">
-            <el-switch v-model="liveScreen" active-text="实时" inactive-text="静态">
+            <el-switch v-model="liveScreen" active-text="real time" inactive-text="static time">
             </el-switch>
           </template>
         </form>
@@ -66,11 +66,11 @@
           <!-- <li><a href="#">Link</a></li> -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">相关文档 <span class="caret"></span></a>
+              aria-expanded="false">Related Documents <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a target="_blank" href="https://github.com/openatx/weditor">openatx/weditor</a></li>
               <li role="separator" class="divider"></li>
-              <li><a target="_blank" href="https://github.com/openatx/weditor">uiautomator2快速参考</a></li>
+              <li><a target="_blank" href="https://github.com/openatx/weditor">uiautomator2 reference link</a></li>
               <li role="separator" class="divider"></li>
               <li><a target="_blank" href="https://github.com/openatx/uiautomator2">openatx/uiautomator2</a></li>
               <li><a target="_blank" href="https://github.com/openatx/facebook-wda">openatx/facebook-wda</a></li>
@@ -148,16 +148,16 @@
                 <tr>
                   <td>
                     <span @click="showCursorPercent = !showCursorPercent" class="cursor-pointer">
-                      坐标
+                      coordinates
                       <i :class="{'inactive': !showCursorPercent}">%</i>
                       <i :class="{'inactive': showCursorPercent}">px</i>
                     </span>
                   </td>
                   <td>
-                    <span title="双击复制" @dblclick="copyToClipboard('('+cursorValue.x+', '+cursorValue.y+')')">
+                    <span title="Double-click replication" @dblclick="copyToClipboard('('+cursorValue.x+', '+cursorValue.y+')')">
                       ({{!cursorValue.x}}, {{!cursorValue.y}})
                     </span>
-                    <a href="#" @click="doPositionTap(cursorValue.x, cursorValue.y)">点击</a>
+                    <a href="#" @click="doPositionTap(cursorValue.x, cursorValue.y)">click</a>
                   </td>
                 </tr>
               </template>
@@ -167,7 +167,7 @@
                   <td>
                     <i v-if="platform == 'iOS'">XCUIElementType</i><span v-text="elem._type"></span>
                     <small v-if="platform == 'iOS'" style="cursor: pointer; float: right;"
-                      @click="copyToClipboard('XCUIElementType' + elem._type)">复制</small>
+                      @click="copyToClipboard('XCUIElementType' + elem._type)">reproduce</small>
                   </td>
                 </tr>
                 <tr v-for="key in filterAttributeKeys(elem)" :key="key">
@@ -183,16 +183,16 @@
             <tfoot></tfoot>
           </table>
           <h5>
-            代码
+            code
           </h5>
           <!-- c9-ide -->
           <input type="text" v-model="generatedCode" class="form-control input-sm">
           <div class="checkbox">
             <label>
-              <input v-model="autoCopy" type="checkbox"> 自动复制代码
+              <input v-model="autoCopy" type="checkbox"> automatic reproduction code
             </label>
             <label>
-              <input v-model="useXPathOnly" type="checkbox"> 强制使用XPath
+              <input v-model="useXPathOnly" type="checkbox"> Mandatory use of XPath
             </label>
           </div>
         </div>
@@ -204,10 +204,10 @@
             <span class="glyphicon glyphicon-music"></span> Coding
             <span class="pull-right coding-commands">
               <el-button @click="initPythonWebSocket" size="mini" style="color: red;" v-if="!pyshell.wsOpen">
-                <i class="fa fa-unlink"></i> 点击重连
+                <i class="fa fa-unlink"></i> click reconnection
               </el-button>
               <el-tooltip :open-delay="500" content="Command+Shift+Enter" placement="top">
-                <el-button type="primary" size="mini" plain @click="codeRunSelected" :loading="codeRunning">单行或选中运行
+                <el-button type="primary" size="mini" plain @click="codeRunSelected" :loading="codeRunning">One-line or Selected Run
                 </el-button>
               </el-tooltip>
               <el-tooltip :open-delay="500" content="Command+Enter" placement="top">
@@ -220,13 +220,13 @@
                   <i class="fa fa-stop"></i>
                 </el-button>
               </el-tooltip>
-              <el-button icon="el-icon-delete" type="warning" size="mini" plain @click="clearCode">重置代码
+              <el-button icon="el-icon-delete" type="warning" size="mini" plain @click="clearCode">reset code
               </el-button>
               <el-button icon="el-icon-document-copy" type="primary" size="mini" plain
                 @click="copyToClipboard(editor.getValue())">
               </el-button>
               <el-button type="danger" size="mini" plain @click="restartKernel">
-                <i title="重启服务" class="fa fa-repeat"></i> <span v-if="pyshell.restarting"> ...</span>
+                <i title="Restart Services" class="fa fa-repeat"></i> <span v-if="pyshell.restarting"> ...</span>
               </el-button>
             </span>
           </div>
