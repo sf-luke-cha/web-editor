@@ -60,8 +60,10 @@ class _AppleDevice(DeviceMeta):
         logger.info("ios connect: %s", device_url)
         if device_url == "":
             c = wda.USBClient()
-        else:
+        if device_url.lower().startswith("http"):
             c = wda.Client(device_url)
+        else:
+            c = wda.USBClient(device_url)
         self._client = c
         self.__scale = c.scale
 
